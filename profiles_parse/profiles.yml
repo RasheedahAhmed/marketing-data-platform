@@ -1,0 +1,11 @@
+marketing_data_platform:
+  target: parse
+  outputs:
+    parse:
+      type: databricks
+      host: example.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/parse
+      token: unused-for-parsing
+      catalog: marketing_ci
+      schema: ci_parse
+      threads: 1

@@ -18,7 +18,7 @@ jobs:
       - run: python -m compileall -q scripts databricks
       - run: pip install -r requirements.txt
       - run: dbt deps --profiles-dir profiles
-      - run: dbt parse --profiles-dir profiles --target dev
+      - run: dbt parse --profiles-dir profiles_parse --target parse
   ci-build:
     needs: validate
     # No secrets for forks. Repository PR branches require trusted reviewers before this environment runs.
@@ -116,4 +116,5 @@ jobs:
           path: |
             target/
             artifacts/
+
 
