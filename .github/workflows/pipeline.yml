@@ -76,7 +76,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
-      - run: python scripts/run_dbt.py --target staging
+      - run: dbt deps --profiles-dir profiles && dbt run-operation print_snapshot_id --profiles-dir profiles --target staging && python scripts/run_dbt.py --target staging
       - run: edr report --profiles-dir profiles --profile-target staging --project-profile-target staging --file-path artifacts/elementary_report.html
       - uses: actions/upload-artifact@v4
         if: always()
@@ -116,5 +116,6 @@ jobs:
           path: |
             target/
             artifacts/
+
 
 
