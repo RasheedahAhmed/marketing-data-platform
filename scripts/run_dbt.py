@@ -11,7 +11,7 @@ from pathlib import Path
 def run(args, capture=False):
     executable=shutil.which('dbt')
     if not executable: raise SystemExit('Activate the virtual environment containing dbt first.')
-    return subprocess.run([executable,*args],check=True,text=True,capture_output=capture)
+    return subprocess.run([executable,*args],check=True,text=True,stdout=subprocess.PIPE if capture else None, stderr=subprocess.STDOUT)
 
 def main():
     parser=argparse.ArgumentParser()
@@ -39,3 +39,4 @@ def main():
     print(f'Built and documented {args.target} from complete batch {batch_id}.')
 
 if __name__=='__main__': main()
+
