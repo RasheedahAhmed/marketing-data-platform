@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+target/
+dbt_packages/
+logs/
+.env
+data/raw/*.csv
+artifacts/
+*.duckdb
+
+profiles/.user.yml

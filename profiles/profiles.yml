@@ -1,0 +1,96 @@
+{
+  "marketing_data_platform": {
+    "target": "dev",
+    "outputs": {
+      "dev": {
+        "type": "databricks",
+        "host": "{{ env_var('DBT_HOST', 'configure-workspace-host') }}",
+        "http_path": "{{ env_var('DBT_HTTP_PATH', '/sql/1.0/warehouses/configure') }}",
+        "catalog": "{{ env_var('DBT_CATALOG', 'marketing_dev') }}",
+        "schema": "{{ env_var('DBT_SCHEMA', 'dev_rasheedah') }}",
+        "auth_type": "oauth",
+        "threads": 4
+      },
+      "staging": {
+        "type": "databricks",
+        "host": "{{ env_var('DBT_HOST', 'configure-workspace-host') }}",
+        "http_path": "{{ env_var('DBT_HTTP_PATH', '/sql/1.0/warehouses/configure') }}",
+        "catalog": "{{ env_var('DBT_CATALOG', 'marketing_staging') }}",
+        "schema": "{{ env_var('DBT_SCHEMA', 'marketing') }}",
+        "auth_type": "oauth",
+        "threads": 4,
+        "client_id": "{{ env_var('DATABRICKS_CLIENT_ID', '') }}",
+        "client_secret": "{{ env_var('DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET', '') }}"
+      },
+      "ci": {
+        "type": "databricks",
+        "host": "{{ env_var('DBT_HOST', 'configure-workspace-host') }}",
+        "http_path": "{{ env_var('DBT_HTTP_PATH', '/sql/1.0/warehouses/configure') }}",
+        "catalog": "{{ env_var('DBT_CATALOG', 'marketing_ci') }}",
+        "schema": "{{ env_var('DBT_SCHEMA', 'ci_local') }}",
+        "auth_type": "oauth",
+        "threads": 4,
+        "client_id": "{{ env_var('DATABRICKS_CLIENT_ID', '') }}",
+        "client_secret": "{{ env_var('DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET', '') }}"
+      },
+      "prod": {
+        "type": "databricks",
+        "host": "{{ env_var('DBT_HOST', 'configure-workspace-host') }}",
+        "http_path": "{{ env_var('DBT_HTTP_PATH', '/sql/1.0/warehouses/configure') }}",
+        "catalog": "{{ env_var('DBT_CATALOG', 'marketing_prod') }}",
+        "schema": "{{ env_var('DBT_SCHEMA', 'marketing') }}",
+        "auth_type": "oauth",
+        "threads": 4,
+        "client_id": "{{ env_var('DATABRICKS_CLIENT_ID', '') }}",
+        "client_secret": "{{ env_var('DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET', '') }}"
+      }
+    }
+  },
+  "elementary": {
+    "target": "dev",
+    "outputs": {
+      "dev": {
+        "type": "databricks",
+        "host": "{{ env_var('DBT_HOST', 'configure-workspace-host') }}",
+        "http_path": "{{ env_var('DBT_HTTP_PATH', '/sql/1.0/warehouses/configure') }}",
+        "catalog": "{{ env_var('DBT_CATALOG', 'marketing_dev') }}",
+        "schema": "{{ env_var('DBT_SCHEMA', 'dev_rasheedah') ~ '_elementary' }}",
+        "auth_type": "oauth",
+        "threads": 4
+      },
+      "staging": {
+        "type": "databricks",
+        "host": "{{ env_var('DBT_HOST', 'configure-workspace-host') }}",
+        "http_path": "{{ env_var('DBT_HTTP_PATH', '/sql/1.0/warehouses/configure') }}",
+        "catalog": "{{ env_var('DBT_CATALOG', 'marketing_staging') }}",
+        "schema": "{{ env_var('DBT_SCHEMA', 'marketing') ~ '_elementary' }}",
+        "auth_type": "oauth",
+        "threads": 4,
+        "client_id": "{{ env_var('DATABRICKS_CLIENT_ID', '') }}",
+        "client_secret": "{{ env_var('DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET', '') }}"
+      },
+      "ci": {
+        "type": "databricks",
+        "host": "{{ env_var('DBT_HOST', 'configure-workspace-host') }}",
+        "http_path": "{{ env_var('DBT_HTTP_PATH', '/sql/1.0/warehouses/configure') }}",
+        "catalog": "{{ env_var('DBT_CATALOG', 'marketing_ci') }}",
+        "schema": "{{ env_var('DBT_SCHEMA', 'ci_local') ~ '_elementary' }}",
+        "auth_type": "oauth",
+        "threads": 4,
+        "client_id": "{{ env_var('DATABRICKS_CLIENT_ID', '') }}",
+        "client_secret": "{{ env_var('DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET', '') }}"
+      },
+      "prod": {
+        "type": "databricks",
+        "host": "{{ env_var('DBT_HOST', 'configure-workspace-host') }}",
+        "http_path": "{{ env_var('DBT_HTTP_PATH', '/sql/1.0/warehouses/configure') }}",
+        "catalog": "{{ env_var('DBT_CATALOG', 'marketing_prod') }}",
+        "schema": "{{ env_var('DBT_SCHEMA', 'marketing') ~ '_elementary' }}",
+        "auth_type": "oauth",
+        "threads": 4,
+        "client_id": "{{ env_var('DATABRICKS_CLIENT_ID', '') }}",
+        "client_secret": "{{ env_var('DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET', '') }}"
+      }
+    }
+  }
+}

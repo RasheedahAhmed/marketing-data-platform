@@ -1,0 +1,244 @@
+{
+  "files": {
+    "ads_stats.csv": {
+      "rows": 92300,
+      "columns": [
+        "ad_id",
+        "account_id",
+        "ad_spend",
+        "ad_impressions",
+        "ad_clicks",
+        "ad_date"
+      ],
+      "nulls": {
+        "ad_id": 0,
+        "account_id": 0,
+        "ad_spend": 0,
+        "ad_impressions": 1474,
+        "ad_clicks": 24337,
+        "ad_date": 0
+      },
+      "exact_duplicates": 0
+    },
+    "new_adgroup_de_randomized.csv": {
+      "rows": 13433,
+      "columns": [
+        "ad_group_id",
+        "ad_group_name",
+        "ad_group_updated_at"
+      ],
+      "nulls": {
+        "ad_group_id": 0,
+        "ad_group_name": 0,
+        "ad_group_updated_at": 0
+      },
+      "exact_duplicates": 0
+    },
+    "new_ads_de_randomized.csv": {
+      "rows": 98926,
+      "columns": [
+        "ad_id",
+        "campaign_id",
+        "ad_group_id",
+        "account_id",
+        "ad_name",
+        "ad_status",
+        "ad_updated_at"
+      ],
+      "nulls": {
+        "ad_id": 0,
+        "campaign_id": 0,
+        "ad_group_id": 0,
+        "account_id": 0,
+        "ad_name": 0,
+        "ad_status": 0,
+        "ad_updated_at": 0
+      },
+      "exact_duplicates": 0
+    },
+    "new_campaign_de_randomized.csv": {
+      "rows": 4162,
+      "columns": [
+        "campaign_id",
+        "campaign_name",
+        "campaign_updated_at"
+      ],
+      "nulls": {
+        "campaign_id": 0,
+        "campaign_name": 0,
+        "campaign_updated_at": 0
+      },
+      "exact_duplicates": 0
+    },
+    "new_acccount_de_randomized.csv": {
+      "rows": 16,
+      "columns": [
+        "account_id",
+        "account_name",
+        "ad_currency_code",
+        "account_created_at",
+        "account_updated_at"
+      ],
+      "nulls": {
+        "account_id": 0,
+        "account_name": 0,
+        "ad_currency_code": 0,
+        "account_created_at": 0,
+        "account_updated_at": 0
+      },
+      "exact_duplicates": 0
+    },
+    "snapchat_ads_stats.csv": {
+      "rows": 2809,
+      "columns": [
+        "ad_detail_id",
+        "ad_currency_code",
+        "ad_country",
+        "ad_spend",
+        "ad_impressions",
+        "ad_clicks",
+        "ad_date",
+        "data_src"
+      ],
+      "nulls": {
+        "ad_detail_id": 0,
+        "ad_currency_code": 0,
+        "ad_country": 0,
+        "ad_spend": 0,
+        "ad_impressions": 0,
+        "ad_clicks": 111,
+        "ad_date": 0,
+        "data_src": 0
+      },
+      "exact_duplicates": 0
+    },
+    "snapchat_ads_ad_history_new_ad_names.csv": {
+      "rows": 2513,
+      "columns": [
+        "ad_id",
+        "ad_group_id",
+        "ad_name",
+        "ad_detail_updated_at"
+      ],
+      "nulls": {
+        "ad_id": 0,
+        "ad_group_id": 0,
+        "ad_name": 0,
+        "ad_detail_updated_at": 0
+      },
+      "exact_duplicates": 0
+    },
+    "snapchat_ads_campaign_history_new_campaign_names.csv": {
+      "rows": 109,
+      "columns": [
+        "campaign_id",
+        "account_id",
+        "campaign_name"
+      ],
+      "nulls": {
+        "campaign_id": 0,
+        "account_id": 0,
+        "campaign_name": 0
+      },
+      "exact_duplicates": 0
+    },
+    "snapchat_ads_adgroup_history_new_ad_group_names.csv": {
+      "rows": 267,
+      "columns": [
+        "_surrogate_key",
+        "ad_group_id",
+        "campaign_id",
+        "ad_group_name",
+        "ad_group_updated_at"
+      ],
+      "nulls": {
+        "_surrogate_key": 0,
+        "ad_group_id": 0,
+        "campaign_id": 0,
+        "ad_group_name": 0,
+        "ad_group_updated_at": 0
+      },
+      "exact_duplicates": 0
+    }
+  },
+  "quality": {
+    "stats_keys": {
+      "facebook": {
+        "duplicate_keys": 0,
+        "max_rows_per_key": 1
+      },
+      "snapchat": {
+        "duplicate_keys": 0,
+        "max_rows_per_key": 1
+      }
+    },
+    "new_ads_de_randomized.csv": {
+      "duplicate_keys": 0,
+      "max_rows_per_key": 1
+    },
+    "new_adgroup_de_randomized.csv": {
+      "duplicate_keys": 0,
+      "max_rows_per_key": 1
+    },
+    "new_campaign_de_randomized.csv": {
+      "duplicate_keys": 0,
+      "max_rows_per_key": 1
+    },
+    "new_acccount_de_randomized.csv": {
+      "duplicate_keys": 0,
+      "max_rows_per_key": 1
+    },
+    "snapchat_ads_ad_history_new_ad_names.csv": {
+      "duplicate_keys": 0,
+      "max_rows_per_key": 1
+    },
+    "snapchat_ads_adgroup_history_new_ad_group_names.csv": {
+      "duplicate_keys": 3,
+      "max_rows_per_key": 2
+    },
+    "snapchat_ads_campaign_history_new_campaign_names.csv": {
+      "duplicate_keys": 0,
+      "max_rows_per_key": 1
+    },
+    "orphans": {
+      "fb_stats": 0,
+      "snap_stats": 0
+    },
+    "date_ranges": {
+      "ads_stats.csv": [
+        "2025-01-01",
+        "2025-12-31"
+      ],
+      "snapchat_ads_stats.csv": [
+        "2024-01-01",
+        "2024-12-02"
+      ]
+    }
+  },
+  "totals": {
+    "facebook|USD": {
+      "rows": 66212,
+      "spend_micros": 6869536990000,
+      "known_impressions": 610075828,
+      "unknown_impression_rows": 229,
+      "known_clicks": 4579027,
+      "unknown_click_rows": 17885
+    },
+    "facebook|EUR": {
+      "rows": 26088,
+      "spend_micros": 2562561240000,
+      "known_impressions": 295373593,
+      "unknown_impression_rows": 1245,
+      "known_clicks": 1158683,
+      "unknown_click_rows": 6452
+    },
+    "snapchat|EUR": {
+      "rows": 2809,
+      "spend_micros": 30529544764,
+      "known_impressions": 33395784,
+      "unknown_impression_rows": 0,
+      "known_clicks": 19012,
+      "unknown_click_rows": 111
+    }
+  }
+}

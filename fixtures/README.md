@@ -1,0 +1,1 @@
+These are small, linked subsets of the supplied logical records, for repeatable offline semantic checks. They are not the complete assignment input. Use all nine original CSVs for Databricks ingestion. This folder intentionally retains source IDs as strings, actual unknown metrics, and multiple Snapchat ad-group versions.

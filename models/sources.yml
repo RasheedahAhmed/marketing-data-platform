@@ -1,0 +1,256 @@
+{
+  "version": 2,
+  "sources": [
+    {
+      "name": "bronze",
+      "database": "{{ env_var('BRONZE_CATALOG', 'marketing_dev') }}",
+      "schema": "{{ env_var('BRONZE_SCHEMA', 'bronze') }}",
+      "description": "Nine complete CSV extracts, atomically published through one batch pointer after all writes succeed. No ad API connector is implemented.",
+      "tables": [
+        {
+          "name": "facebook_stats",
+          "description": "Current complete published snapshot from ads_stats.csv. Raw fields are strings. Historical batches remain in bronze raw__facebook_stats.",
+          "columns": [
+            {
+              "name": "ad_id",
+              "description": "Original source field ad_id; no type inference at ingestion."
+            },
+            {
+              "name": "account_id",
+              "description": "Original source field account_id; no type inference at ingestion."
+            },
+            {
+              "name": "ad_spend",
+              "description": "Original source field ad_spend; no type inference at ingestion."
+            },
+            {
+              "name": "ad_impressions",
+              "description": "Original source field ad_impressions; no type inference at ingestion."
+            },
+            {
+              "name": "ad_clicks",
+              "description": "Original source field ad_clicks; no type inference at ingestion."
+            },
+            {
+              "name": "ad_date",
+              "description": "Original source field ad_date; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__facebook_stats"
+        },
+        {
+          "name": "facebook_ads",
+          "description": "Current complete published snapshot from new_ads_de_randomized.csv. Raw fields are strings. Historical batches remain in bronze raw__facebook_ads.",
+          "columns": [
+            {
+              "name": "ad_id",
+              "description": "Original source field ad_id; no type inference at ingestion."
+            },
+            {
+              "name": "campaign_id",
+              "description": "Original source field campaign_id; no type inference at ingestion."
+            },
+            {
+              "name": "ad_group_id",
+              "description": "Original source field ad_group_id; no type inference at ingestion."
+            },
+            {
+              "name": "account_id",
+              "description": "Original source field account_id; no type inference at ingestion."
+            },
+            {
+              "name": "ad_name",
+              "description": "Original source field ad_name; no type inference at ingestion."
+            },
+            {
+              "name": "ad_status",
+              "description": "Original source field ad_status; no type inference at ingestion."
+            },
+            {
+              "name": "ad_updated_at",
+              "description": "Original source field ad_updated_at; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__facebook_ads"
+        },
+        {
+          "name": "facebook_adgroups",
+          "description": "Current complete published snapshot from new_adgroup_de_randomized.csv. Raw fields are strings. Historical batches remain in bronze raw__facebook_adgroups.",
+          "columns": [
+            {
+              "name": "ad_group_id",
+              "description": "Original source field ad_group_id; no type inference at ingestion."
+            },
+            {
+              "name": "ad_group_name",
+              "description": "Original source field ad_group_name; no type inference at ingestion."
+            },
+            {
+              "name": "ad_group_updated_at",
+              "description": "Original source field ad_group_updated_at; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__facebook_adgroups"
+        },
+        {
+          "name": "facebook_campaigns",
+          "description": "Current complete published snapshot from new_campaign_de_randomized.csv. Raw fields are strings. Historical batches remain in bronze raw__facebook_campaigns.",
+          "columns": [
+            {
+              "name": "campaign_id",
+              "description": "Original source field campaign_id; no type inference at ingestion."
+            },
+            {
+              "name": "campaign_name",
+              "description": "Original source field campaign_name; no type inference at ingestion."
+            },
+            {
+              "name": "campaign_updated_at",
+              "description": "Original source field campaign_updated_at; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__facebook_campaigns"
+        },
+        {
+          "name": "facebook_accounts",
+          "description": "Current complete published snapshot from new_acccount_de_randomized.csv. Raw fields are strings. Historical batches remain in bronze raw__facebook_accounts.",
+          "columns": [
+            {
+              "name": "account_id",
+              "description": "Original source field account_id; no type inference at ingestion."
+            },
+            {
+              "name": "account_name",
+              "description": "Original source field account_name; no type inference at ingestion."
+            },
+            {
+              "name": "ad_currency_code",
+              "description": "Original source field ad_currency_code; no type inference at ingestion."
+            },
+            {
+              "name": "account_created_at",
+              "description": "Original source field account_created_at; no type inference at ingestion."
+            },
+            {
+              "name": "account_updated_at",
+              "description": "Original source field account_updated_at; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__facebook_accounts"
+        },
+        {
+          "name": "snapchat_stats",
+          "description": "Current complete published snapshot from snapchat_ads_stats.csv. Raw fields are strings. Historical batches remain in bronze raw__snapchat_stats.",
+          "columns": [
+            {
+              "name": "ad_detail_id",
+              "description": "Original source field ad_detail_id; no type inference at ingestion."
+            },
+            {
+              "name": "ad_currency_code",
+              "description": "Original source field ad_currency_code; no type inference at ingestion."
+            },
+            {
+              "name": "ad_country",
+              "description": "Original source field ad_country; no type inference at ingestion."
+            },
+            {
+              "name": "ad_spend",
+              "description": "Original source field ad_spend; no type inference at ingestion."
+            },
+            {
+              "name": "ad_impressions",
+              "description": "Original source field ad_impressions; no type inference at ingestion."
+            },
+            {
+              "name": "ad_clicks",
+              "description": "Original source field ad_clicks; no type inference at ingestion."
+            },
+            {
+              "name": "ad_date",
+              "description": "Original source field ad_date; no type inference at ingestion."
+            },
+            {
+              "name": "data_src",
+              "description": "Original source field data_src; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__snapchat_stats"
+        },
+        {
+          "name": "snapchat_ads",
+          "description": "Current complete published snapshot from snapchat_ads_ad_history_new_ad_names.csv. Raw fields are strings. Historical batches remain in bronze raw__snapchat_ads.",
+          "columns": [
+            {
+              "name": "ad_id",
+              "description": "Original source field ad_id; no type inference at ingestion."
+            },
+            {
+              "name": "ad_group_id",
+              "description": "Original source field ad_group_id; no type inference at ingestion."
+            },
+            {
+              "name": "ad_name",
+              "description": "Original source field ad_name; no type inference at ingestion."
+            },
+            {
+              "name": "ad_detail_updated_at",
+              "description": "Original source field ad_detail_updated_at; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__snapchat_ads"
+        },
+        {
+          "name": "snapchat_adgroups",
+          "description": "Current complete published snapshot from snapchat_ads_adgroup_history_new_ad_group_names.csv. Raw fields are strings. Historical batches remain in bronze raw__snapchat_adgroups.",
+          "columns": [
+            {
+              "name": "_surrogate_key",
+              "description": "Original source field _surrogate_key; no type inference at ingestion."
+            },
+            {
+              "name": "ad_group_id",
+              "description": "Original source field ad_group_id; no type inference at ingestion."
+            },
+            {
+              "name": "campaign_id",
+              "description": "Original source field campaign_id; no type inference at ingestion."
+            },
+            {
+              "name": "ad_group_name",
+              "description": "Original source field ad_group_name; no type inference at ingestion."
+            },
+            {
+              "name": "ad_group_updated_at",
+              "description": "Original source field ad_group_updated_at; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__snapchat_adgroups"
+        },
+        {
+          "name": "snapchat_campaigns",
+          "description": "Current complete published snapshot from snapchat_ads_campaign_history_new_campaign_names.csv. Raw fields are strings. Historical batches remain in bronze raw__snapchat_campaigns.",
+          "columns": [
+            {
+              "name": "campaign_id",
+              "description": "Original source field campaign_id; no type inference at ingestion."
+            },
+            {
+              "name": "account_id",
+              "description": "Original source field account_id; no type inference at ingestion."
+            },
+            {
+              "name": "campaign_name",
+              "description": "Original source field campaign_name; no type inference at ingestion."
+            }
+          ],
+          "identifier": "raw__snapchat_campaigns"
+        },
+        {
+          "name": "active_batch",
+          "description": "One atomic publication pointer per dataset. The runner freezes this value before building."
+        }
+      ]
+    }
+  ]
+}

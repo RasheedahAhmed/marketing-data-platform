@@ -1,0 +1,10 @@
+2026-10-20 11:05:13 — INFO — Running with edr=0.20.1
+2026-10-20 11:08:16 — INFO — Running with edr=0.20.1
+2026-10-20 11:08:19 — INFO — Installing packages for edr internal dbt package...
+2026-10-20 11:08:19 — INFO — Running dbt command --log-format json deps --project-dir C:\Users\HP\Downloads\Marketing_Data_Platform_Databricks_dbt\marketing_data_platform\.venv\Lib\site-packages\elementary\monitor\dbt_project --profiles-dir C:\Users\HP\Downloads\Marketing_Data_Platform_Databricks_dbt\marketing_data_platform\profiles --target dev
+2026-10-20 11:10:49 — INFO — Running with edr=0.20.1
+2026-10-20 11:10:51 — INFO — Installing packages for edr internal dbt package...
+2026-10-20 11:10:51 — INFO — Running dbt command --log-format json deps --project-dir C:\Users\HP\Downloads\Marketing_Data_Platform_Databricks_dbt\marketing_data_platform\.venv\Lib\site-packages\elementary\monitor\dbt_project --profiles-dir M:\profiles --target dev
+2026-10-20 11:12:23 — INFO — Running with edr=0.20.1
+2026-10-20 11:12:27 — INFO — Installing packages for edr internal dbt package...
+2026-10-20 11:12:27 — INFO — Running dbt command --log-format json deps --project-dir C:\Users\HP\Downloads\Marketing_Data_Platform_Databricks_dbt\marketing_data_platform\.venv\Lib\site-packages\elementary\monitor\dbt_project --profiles-dir M:\profiles --target dev

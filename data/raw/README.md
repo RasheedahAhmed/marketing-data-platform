@@ -1,0 +1,1 @@
+Copy all nine original CSVs here for full local validation, or upload them directly to the Unity Catalog Volume for ingestion. Do not open and resave IDs through Excel; 18-digit Facebook identifiers must remain exact strings. Full source extracts are not bundled into this code package.

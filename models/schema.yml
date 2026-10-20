@@ -1,0 +1,463 @@
+{
+  "version": 2,
+  "models": [
+    {
+      "name": "stg_facebook_stats",
+      "description": "Typed daily facebook metrics. Exact duplicate raw rows collapse; conflicting rows at the business grain fail tests. Null impressions/clicks remain unknown.",
+      "columns": [
+        {
+          "name": "ad_id",
+          "description": "Source ad identifier, always string."
+        },
+        {
+          "name": "date_day",
+          "description": "Source reporting date; no inferred timezone conversion."
+        },
+        {
+          "name": "spend",
+          "description": "Source monetary amount in currency_code, six decimal places. Snapchat input is already decimal; no micro-unit division."
+        },
+        {
+          "name": "impressions",
+          "description": "Nullable count; null means unknown, not zero."
+        },
+        {
+          "name": "clicks",
+          "description": "Nullable source clicks; platform definitions can differ."
+        },
+        {
+          "name": "_batch_id",
+          "description": "Identifier of the complete published input snapshot."
+        }
+      ]
+    },
+    {
+      "name": "stg_snapchat_stats",
+      "description": "Typed daily snapchat metrics. Exact duplicate raw rows collapse; conflicting rows at the business grain fail tests. Null impressions/clicks remain unknown.",
+      "columns": [
+        {
+          "name": "ad_id",
+          "description": "Source ad identifier, always string."
+        },
+        {
+          "name": "date_day",
+          "description": "Source reporting date; no inferred timezone conversion."
+        },
+        {
+          "name": "spend",
+          "description": "Source monetary amount in currency_code, six decimal places. Snapchat input is already decimal; no micro-unit division."
+        },
+        {
+          "name": "impressions",
+          "description": "Nullable count; null means unknown, not zero."
+        },
+        {
+          "name": "clicks",
+          "description": "Nullable source clicks; platform definitions can differ."
+        },
+        {
+          "name": "_batch_id",
+          "description": "Identifier of the complete published input snapshot."
+        }
+      ]
+    },
+    {
+      "name": "stg_facebook_ads",
+      "description": "Latest record per account_id, ad_id. Type 1 attribution: current names and parent links apply to all dates. Ties with conflicting payloads fail the raw ambiguity test.",
+      "columns": [
+        {
+          "name": "ad_id",
+          "description": "Current source ad_id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "campaign_id",
+          "description": "Current source campaign_id."
+        },
+        {
+          "name": "ad_group_id",
+          "description": "Current source ad_group_id."
+        },
+        {
+          "name": "account_id",
+          "description": "Current source account_id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "ad_name",
+          "description": "Current source ad_name."
+        },
+        {
+          "name": "ad_status",
+          "description": "Current source ad_status."
+        }
+      ]
+    },
+    {
+      "name": "stg_facebook_adgroups",
+      "description": "Latest record per ad_group_id. Type 1 attribution: current names and parent links apply to all dates. Ties with conflicting payloads fail the raw ambiguity test.",
+      "columns": [
+        {
+          "name": "ad_group_id",
+          "description": "Current source ad_group_id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "ad_group_name",
+          "description": "Current source ad_group_name."
+        }
+      ]
+    },
+    {
+      "name": "stg_facebook_campaigns",
+      "description": "Latest record per campaign_id. Type 1 attribution: current names and parent links apply to all dates. Ties with conflicting payloads fail the raw ambiguity test.",
+      "columns": [
+        {
+          "name": "campaign_id",
+          "description": "Current source campaign_id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "campaign_name",
+          "description": "Current source campaign_name."
+        }
+      ]
+    },
+    {
+      "name": "stg_facebook_accounts",
+      "description": "Latest record per account_id. Type 1 attribution: current names and parent links apply to all dates. Ties with conflicting payloads fail the raw ambiguity test.",
+      "columns": [
+        {
+          "name": "account_id",
+          "description": "Current source account_id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "account_name",
+          "description": "Current source account_name."
+        },
+        {
+          "name": "ad_currency_code",
+          "description": "Current source ad_currency_code."
+        }
+      ]
+    },
+    {
+      "name": "stg_snapchat_ads",
+      "description": "Latest record per ad_id. Type 1 attribution: current names and parent links apply to all dates. Ties with conflicting payloads fail the raw ambiguity test.",
+      "columns": [
+        {
+          "name": "ad_id",
+          "description": "Current source ad_id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "ad_group_id",
+          "description": "Current source ad_group_id."
+        },
+        {
+          "name": "ad_name",
+          "description": "Current source ad_name."
+        }
+      ]
+    },
+    {
+      "name": "stg_snapchat_adgroups",
+      "description": "Latest record per ad_group_id. Type 1 attribution: current names and parent links apply to all dates. Ties with conflicting payloads fail the raw ambiguity test.",
+      "columns": [
+        {
+          "name": "ad_group_id",
+          "description": "Current source ad_group_id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "campaign_id",
+          "description": "Current source campaign_id."
+        },
+        {
+          "name": "ad_group_name",
+          "description": "Current source ad_group_name."
+        }
+      ]
+    },
+    {
+      "name": "stg_snapchat_campaigns",
+      "description": "Latest record per campaign_id. Type 1 attribution: current names and parent links apply to all dates. Ties with conflicting payloads fail the raw ambiguity test.",
+      "columns": [
+        {
+          "name": "campaign_id",
+          "description": "Current source campaign_id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "account_id",
+          "description": "Current source account_id."
+        },
+        {
+          "name": "campaign_name",
+          "description": "Current source campaign_name."
+        }
+      ]
+    },
+    {
+      "name": "int_facebook_ads",
+      "description": "One row per Facebook account/ad; deduplicated dimension joins preserve cardinality.",
+      "columns": []
+    },
+    {
+      "name": "int_snapchat_ads",
+      "description": "One row per Snapchat ad; group history is reduced before joining to avoid fanout.",
+      "columns": []
+    },
+    {
+      "name": "dim_campaigns",
+      "description": "Current campaign dimension. One row per platform/account/campaign; no parsing of randomized names.",
+      "columns": [
+        {
+          "name": "campaign_key",
+          "description": "Length-prefixed MD5 key over platform, account_id, campaign_id. Null and empty are distinct.",
+          "data_tests": [
+            "unique",
+            "not_null"
+          ]
+        },
+        {
+          "name": "platform",
+          "description": "facebook or snapchat."
+        },
+        {
+          "name": "account_id",
+          "description": "Source account ID as string."
+        },
+        {
+          "name": "campaign_id",
+          "description": "Source campaign ID as string."
+        },
+        {
+          "name": "campaign_name",
+          "description": "Latest available display name; not a historical as-of name."
+        }
+      ]
+    },
+    {
+      "name": "int_marketing_ads",
+      "description": "One row per platform/account/ad/day/country/currency; Facebook country is unknown. Left joins retain unmatched facts.",
+      "columns": []
+    },
+    {
+      "name": "fct_marketing_spend",
+      "description": "Daily ad performance at platform/account/ad/day/country/currency grain. Delta MERGE reprocesses the entire current snapshot, updates historical corrections and marks removed keys is_deleted=true. All consumers must use marketing_performance (active rows). Full source scan is intentional at this scale.",
+      "columns": [
+        {
+          "name": "performance_key",
+          "description": "performance key.",
+          "data_tests": [
+            "unique",
+            "not_null"
+          ]
+        },
+        {
+          "name": "campaign_key",
+          "description": "campaign key."
+        },
+        {
+          "name": "platform",
+          "description": "platform.",
+          "data_tests": [
+            "not_null",
+            {
+              "accepted_values": {
+                "values": [
+                  "facebook",
+                  "snapchat"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "date_day",
+          "description": "date day.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "account_id",
+          "description": "account id."
+        },
+        {
+          "name": "ad_id",
+          "description": "ad id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "ad_group_id",
+          "description": "ad group id."
+        },
+        {
+          "name": "campaign_id",
+          "description": "campaign id."
+        },
+        {
+          "name": "ad_name",
+          "description": "ad name."
+        },
+        {
+          "name": "ad_group_name",
+          "description": "ad group name."
+        },
+        {
+          "name": "campaign_name",
+          "description": "campaign name."
+        },
+        {
+          "name": "account_name",
+          "description": "account name."
+        },
+        {
+          "name": "ad_status",
+          "description": "ad status."
+        },
+        {
+          "name": "currency_code",
+          "description": "currency code.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "country_code",
+          "description": "country code."
+        },
+        {
+          "name": "spend",
+          "description": "Decimal amount in currency_code; sum only within a currency.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "impressions",
+          "description": "Nullable count; unknown values remain null."
+        },
+        {
+          "name": "clicks",
+          "description": "Nullable count; unknown values remain null."
+        },
+        {
+          "name": "_batch_id",
+          "description": " batch id.",
+          "data_tests": [
+            "not_null"
+          ]
+        },
+        {
+          "name": "hierarchy_complete",
+          "description": "hierarchy complete."
+        },
+        {
+          "name": "is_deleted",
+          "description": "True when key is absent from the latest full input snapshot. Historical metrics are retained for audit only."
+        }
+      ]
+    },
+    {
+      "name": "marketing_performance",
+      "description": "Recommended ad-level consumption view: active rows only. CTR is a fraction, CPC/CPM use the row currency. Zero/unknown denominators yield null.",
+      "columns": [
+        {
+          "name": "performance_key",
+          "description": "Unique daily performance key.",
+          "data_tests": [
+            "unique",
+            "not_null"
+          ]
+        },
+        {
+          "name": "ctr",
+          "description": "Clicks / impressions as a fraction, not percentage points. Null if clicks unknown or impressions unknown/zero."
+        },
+        {
+          "name": "cpc",
+          "description": "Spend / clicks in currency_code. Null for unknown/zero clicks."
+        },
+        {
+          "name": "cpm",
+          "description": "Spend / impressions * 1000 in currency_code. Null for unknown/zero impressions."
+        },
+        {
+          "name": "platform",
+          "description": "Normalized advertising source.",
+          "data_tests": [
+            {
+              "accepted_values": {
+                "values": [
+                  "facebook",
+                  "snapchat"
+                ]
+              }
+            },
+            "not_null"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rpt_campaign_daily",
+      "description": "Campaign/day/account/platform/currency reporting view. Country is aggregated away. Complete totals and ratios are null when required inputs are incomplete; known_* columns show partial observations, not complete totals.",
+      "columns": [
+        {
+          "name": "source_rows",
+          "description": "Number of ad-level source observations."
+        },
+        {
+          "name": "known_clicks",
+          "description": "Sum of observed clicks; may be incomplete. Null if none observed."
+        },
+        {
+          "name": "known_impressions",
+          "description": "Sum of observed impressions; may be incomplete."
+        },
+        {
+          "name": "unknown_click_rows",
+          "description": "Number of rows with unknown clicks."
+        },
+        {
+          "name": "unknown_impression_rows",
+          "description": "Number of rows with unknown impressions."
+        },
+        {
+          "name": "clicks",
+          "description": "Complete click count only if every contributing observation is known."
+        },
+        {
+          "name": "impressions",
+          "description": "Complete impression count only if every contributing observation is known."
+        },
+        {
+          "name": "spend",
+          "description": "Sum of monetary amounts within currency_code."
+        }
+      ]
+    }
+  ]
+}

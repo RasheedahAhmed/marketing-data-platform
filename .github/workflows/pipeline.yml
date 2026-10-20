@@ -1,0 +1,119 @@
+name: Marketing platform
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/validate_local.py --fixtures fixtures
+      - run: python -m compileall -q scripts databricks
+      - run: pip install -r requirements.txt
+      - run: dbt deps --profiles-dir profiles
+      - run: dbt parse --profiles-dir profiles --target dev
+  ci-build:
+    needs: validate
+    # No secrets for forks. Repository PR branches require trusted reviewers before this environment runs.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    environment: ci
+    concurrency:
+      group: marketing-ci-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    env:
+      DBT_HOST: ${{ vars.DBT_HOST }}
+      DBT_HTTP_PATH: ${{ vars.DBT_HTTP_PATH }}
+      DBT_CATALOG: marketing_ci
+      DBT_SCHEMA: ci_pr_${{ github.event.pull_request.number }}
+      BRONZE_CATALOG: marketing_ci
+      BRONZE_SCHEMA: bronze
+      DATABRICKS_CLIENT_ID: ${{ vars.DATABRICKS_CLIENT_ID }}
+      DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: dbt deps --profiles-dir profiles --target ci
+      - run: dbt run-operation bootstrap_ci_schemas --profiles-dir profiles --target ci
+      - run: python scripts/run_dbt.py --target ci --full-refresh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ci-dbt-${{ github.run_id }}
+          path: |
+            target/
+            artifacts/
+  staging:
+    needs: validate
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment: staging
+    concurrency:
+      group: marketing-staging
+      cancel-in-progress: false
+    env:
+      DBT_HOST: ${{ vars.DBT_HOST }}
+      DBT_HTTP_PATH: ${{ vars.DBT_HTTP_PATH }}
+      DBT_CATALOG: marketing_staging
+      DBT_SCHEMA: marketing
+      BRONZE_CATALOG: marketing_staging
+      BRONZE_SCHEMA: bronze
+      DATABRICKS_CLIENT_ID: ${{ vars.DATABRICKS_CLIENT_ID }}
+      DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python scripts/run_dbt.py --target staging
+      - run: edr report --profiles-dir profiles --profile-target staging --project-profile-target staging --file-path artifacts/elementary_report.html
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: staging-dbt-${{ github.run_id }}
+          path: |
+            target/
+            artifacts/
+  production:
+    needs: staging
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: marketing-production
+      cancel-in-progress: false
+    env:
+      DBT_HOST: ${{ vars.DBT_HOST }}
+      DBT_HTTP_PATH: ${{ vars.DBT_HTTP_PATH }}
+      DBT_CATALOG: marketing_prod
+      DBT_SCHEMA: marketing
+      BRONZE_CATALOG: marketing_dev
+      BRONZE_SCHEMA: bronze
+      DATABRICKS_CLIENT_ID: ${{ vars.DATABRICKS_CLIENT_ID }}
+      DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python scripts/run_dbt.py --target prod
+      - run: edr report --profiles-dir profiles --profile-target prod --project-profile-target prod --file-path artifacts/elementary_report.html
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-dbt-${{ github.run_id }}
+          path: |
+            target/
+            artifacts/
+

@@ -1,0 +1,375 @@
+{
+  "engine": "SQLite semantic SQL execution with a restricted renderer; NOT dbt compilation, Spark, Delta MERGE execution, or Elementary validation.",
+  "scope": "complete uploaded source tables",
+  "source_rows": {
+    "facebook_stats": 92300,
+    "facebook_ads": 98926,
+    "facebook_adgroups": 13433,
+    "facebook_campaigns": 4162,
+    "facebook_accounts": 16,
+    "snapchat_stats": 2809,
+    "snapchat_ads": 2513,
+    "snapchat_adgroups": 267,
+    "snapchat_campaigns": 109
+  },
+  "model_order": [
+    "stg_facebook_accounts",
+    "stg_facebook_adgroups",
+    "stg_facebook_ads",
+    "stg_facebook_campaigns",
+    "stg_facebook_stats",
+    "stg_snapchat_adgroups",
+    "stg_snapchat_ads",
+    "stg_snapchat_campaigns",
+    "stg_snapchat_stats",
+    "int_facebook_ads",
+    "int_snapchat_ads",
+    "dim_campaigns",
+    "int_marketing_ads",
+    "fct_marketing_spend",
+    "marketing_performance",
+    "rpt_campaign_daily"
+  ],
+  "original_totals": [
+    {
+      "platform": "facebook",
+      "currency_code": "EUR",
+      "rows": 26088,
+      "spend": 2562561.24,
+      "known_impressions": 295373593,
+      "known_clicks": 1158683,
+      "unknown_impression_rows": 1245,
+      "unknown_click_rows": 6452,
+      "first_day": "2025-01-01",
+      "last_day": "2025-09-17"
+    },
+    {
+      "platform": "facebook",
+      "currency_code": "USD",
+      "rows": 66212,
+      "spend": 6869536.99,
+      "known_impressions": 610075828,
+      "known_clicks": 4579027,
+      "unknown_impression_rows": 229,
+      "unknown_click_rows": 17885,
+      "first_day": "2025-01-01",
+      "last_day": "2025-12-31"
+    },
+    {
+      "platform": "snapchat",
+      "currency_code": "EUR",
+      "rows": 2809,
+      "spend": 30529.544764,
+      "known_impressions": 33395784,
+      "known_clicks": 19012,
+      "unknown_impression_rows": 0,
+      "unknown_click_rows": 111,
+      "first_day": "2024-01-01",
+      "last_day": "2024-12-02"
+    }
+  ],
+  "checks": [
+    {
+      "test": "campaign_relationship",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "complete_hierarchy",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_ambiguous_facebook_accounts",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_ambiguous_facebook_adgroups",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_ambiguous_facebook_ads",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_ambiguous_facebook_campaigns",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_ambiguous_snapchat_adgroups",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_ambiguous_snapchat_ads",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_ambiguous_snapchat_campaigns",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_fact_fanout",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "no_mixed_batch",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "null_safe_rates",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "reconcile_platform_currency",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "snapchat_source_label",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_facebook_accounts_current",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_facebook_adgroups_current",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_facebook_ads_current",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_facebook_campaigns_current",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_facebook_stat_grain",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_snapchat_adgroups_current",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_snapchat_ads_current",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_snapchat_campaigns_current",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "unique_snapchat_stat_grain",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_facebook_accounts_timestamp",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_facebook_adgroups_timestamp",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_facebook_ads_timestamp",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_facebook_campaigns_timestamp",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_facebook_raw_metrics",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_metrics",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_snapchat_adgroups_timestamp",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_snapchat_ads_timestamp",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "valid_snapchat_raw_metrics",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "stg_facebook_ads.ad_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "stg_facebook_ads.account_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "stg_facebook_adgroups.ad_group_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "stg_facebook_campaigns.campaign_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "stg_facebook_accounts.account_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "stg_snapchat_ads.ad_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "stg_snapchat_adgroups.ad_group_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "stg_snapchat_campaigns.campaign_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "dim_campaigns.campaign_key.unique",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "dim_campaigns.campaign_key.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend.performance_key.unique",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend.performance_key.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend.platform.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend.platform.{'accepted_values': {'values': ['facebook', 'snapchat']}}",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend.date_day.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend.ad_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend.currency_code.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend.spend.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "fct_marketing_spend._batch_id.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "marketing_performance.performance_key.unique",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "marketing_performance.performance_key.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "marketing_performance.platform.{'accepted_values': {'values': ['facebook', 'snapchat']}}",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "marketing_performance.platform.not_null",
+      "passed": true,
+      "example_failures": []
+    },
+    {
+      "test": "idempotent_rebuild",
+      "passed": true
+    },
+    {
+      "test": "historical_correction",
+      "passed": true
+    },
+    {
+      "test": "snapshot_delete",
+      "passed": true
+    },
+    {
+      "test": "orphan_preserved_and_detected",
+      "passed": true
+    },
+    {
+      "test": "conflicting_grain_detected",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "remaining": [
+    "Install and resolve pinned dbt/Elementary dependencies.",
+    "Run dbt parse and dbt build on Databricks.",
+    "Exercise physical Delta MERGE, permissions, and service-principal OAuth.",
+    "Generate real dbt static HTML and Elementary reports from warehouse runs."
+  ]
+}

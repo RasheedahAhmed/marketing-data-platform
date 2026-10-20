@@ -1,0 +1,91 @@
+{
+  "facebook_stats": {
+    "file": "ads_stats.csv",
+    "columns": [
+      "ad_id",
+      "account_id",
+      "ad_spend",
+      "ad_impressions",
+      "ad_clicks",
+      "ad_date"
+    ]
+  },
+  "facebook_ads": {
+    "file": "new_ads_de_randomized.csv",
+    "columns": [
+      "ad_id",
+      "campaign_id",
+      "ad_group_id",
+      "account_id",
+      "ad_name",
+      "ad_status",
+      "ad_updated_at"
+    ]
+  },
+  "facebook_adgroups": {
+    "file": "new_adgroup_de_randomized.csv",
+    "columns": [
+      "ad_group_id",
+      "ad_group_name",
+      "ad_group_updated_at"
+    ]
+  },
+  "facebook_campaigns": {
+    "file": "new_campaign_de_randomized.csv",
+    "columns": [
+      "campaign_id",
+      "campaign_name",
+      "campaign_updated_at"
+    ]
+  },
+  "facebook_accounts": {
+    "file": "new_acccount_de_randomized.csv",
+    "columns": [
+      "account_id",
+      "account_name",
+      "ad_currency_code",
+      "account_created_at",
+      "account_updated_at"
+    ]
+  },
+  "snapchat_stats": {
+    "file": "snapchat_ads_stats.csv",
+    "columns": [
+      "ad_detail_id",
+      "ad_currency_code",
+      "ad_country",
+      "ad_spend",
+      "ad_impressions",
+      "ad_clicks",
+      "ad_date",
+      "data_src"
+    ]
+  },
+  "snapchat_ads": {
+    "file": "snapchat_ads_ad_history_new_ad_names.csv",
+    "columns": [
+      "ad_id",
+      "ad_group_id",
+      "ad_name",
+      "ad_detail_updated_at"
+    ]
+  },
+  "snapchat_adgroups": {
+    "file": "snapchat_ads_adgroup_history_new_ad_group_names.csv",
+    "columns": [
+      "_surrogate_key",
+      "ad_group_id",
+      "campaign_id",
+      "ad_group_name",
+      "ad_group_updated_at"
+    ]
+  },
+  "snapchat_campaigns": {
+    "file": "snapchat_ads_campaign_history_new_campaign_names.csv",
+    "columns": [
+      "campaign_id",
+      "account_id",
+      "campaign_name"
+    ]
+  }
+}
