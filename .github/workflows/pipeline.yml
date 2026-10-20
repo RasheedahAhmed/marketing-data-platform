@@ -33,7 +33,7 @@ jobs:
       DBT_HTTP_PATH: ${{ vars.DBT_HTTP_PATH }}
       DBT_CATALOG: marketing_ci
       DBT_SCHEMA: ci_pr_${{ github.event.pull_request.number }}
-      BRONZE_CATALOG: marketing_ci
+      BRONZE_CATALOG: marketing_dev
       BRONZE_SCHEMA: bronze
       DATABRICKS_CLIENT_ID: ${{ vars.DATABRICKS_CLIENT_ID }}
       DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
@@ -66,7 +66,7 @@ jobs:
       DBT_HTTP_PATH: ${{ vars.DBT_HTTP_PATH }}
       DBT_CATALOG: marketing_staging
       DBT_SCHEMA: marketing
-      BRONZE_CATALOG: marketing_staging
+      BRONZE_CATALOG: marketing_dev
       BRONZE_SCHEMA: bronze
       DATABRICKS_CLIENT_ID: ${{ vars.DATABRICKS_CLIENT_ID }}
       DBT_ENV_SECRET_DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
@@ -116,6 +116,7 @@ jobs:
           path: |
             target/
             artifacts/
+
 
 
 
